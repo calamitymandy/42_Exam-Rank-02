@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:13:20 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/01/11 16:51:21 by amdemuyn         ###   ########.fr       */
+/*   Created: 2023/01/24 19:58:22 by amdemuyn          #+#    #+#             */
+/*   Updated: 2023/01/24 20:18:10 by amdemuyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+char	*ft_strdup(char *src)
 {
 	int	i;
+	char	*dest;
 
 	i = 0;
-	if (argc == 4 && argv[2][1] == '\0' && argv[3][1] == '\0')
+	while (src[i] != '\0')
+		i++;
+	dest = malloc(sizeof(char) * (i + 1));
+	if (dest == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
 	{
-		while (argv[1][i] != '\0')
-		{
-			if (argv[1][i] == argv[2][0])
-				argv[1][i] = argv[3][0];
-			write(1, &argv[1][i], 1);
-			i++;
-		}
-		write(1, "\n", 1);
+		dest[i] = src[i];
+		i++;
 	}
-	else
-		write(1, "\n", 1);
+	dest[i] = src[i];
+	return (dest);
 }
+
+/*int	main(void)
+{
+printf("%s", ft_strdup("Ceci est un test"));
+}*/
