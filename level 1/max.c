@@ -1,38 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   max.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 18:30:45 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/01/09 18:43:41 by amdemuyn         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 
-int	max(int* tab, unsigned int len)
+int max(int *tab, unsigned int len)
 {
-	int	i;
-	int	res;
+    int i;
+    int num;
 
-	i = 0;
-	if (!tab)
-		return (0);
-	res = tab[0];
-	while (i < len)
-	{
-		if (tab[i] > res)
-			res = tab[i];
-		i++;
-	}
-	return (res);
+    i = 1;
+    num = tab[0];
+    if (len == 0)
+        return (0);
+    while (i < len)
+    {
+        if (num < tab[i])
+            num = tab[i];
+        i++;
+    }
+    return (num);
 }
 
-/*int	main(void)
-{
-	int tab[] = {1, 5, -6, 99, 52, 63};
-	printf("%d", max(tab, 6));
-	return (0);
+
+/*int main(void) {
+    int tab[] = {-56, -50, 0, -56};
+    printf("%d", max(tab, 4));
 }*/
