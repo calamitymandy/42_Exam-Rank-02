@@ -1,61 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   str_capitalizer.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 15:38:53 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/01/10 16:32:05 by amdemuyn         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 
-void ft_capitalizer(char *str)
+int main(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'))
-		{
-			write(1, &str[i], 1);
-			i++;
-		}
-		if (str[i] != '\0')
-		{
-			if (str[i] >= 'a' && str[i] <= 'z')
-				str[i] -= 32;
-			write(1, &str[i], 1);
-			i++;
-		}
-		while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
-		{
-			if (str[i] >= 'A' && str[i] <= 'Z')
-				str[i] += 32;
-			write(1, &str[i], 1);
-			i++;
-		}
-	}
-	write(1, "\n", 1);
-}
-
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	if (argc < 1)
-		write (1, "\n", 1);
-	else
-	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_capitalizer(argv[i]);
-			i++;
-		}
-	}
-	return (0);
+    if (argc >= 2)
+    {
+        int i;
+        int j;
+        
+        i = 1;
+        j = 0;
+        while (argv[i])
+        {
+            while (argv[i][j])
+            {
+                while (argv[i][j] && (argv[i][j] == ' ' || argv[i][j] == '\t'))
+                {
+                    write (1, &argv[i][j], 1);
+                    j++;
+                }
+                if (argv[i][j])
+                {
+                    if (argv[i][j] >= 'a' && argv[i][j] <= 'z')
+                        argv[i][j] -= 32;
+                    write (1, &argv[i][j], 1);
+                    j++;
+                }
+                while (argv[i][j] && argv[i][j] != ' ' && argv[i][j] != '\t')
+                {
+                    if (argv[i][j] >= 'A' && argv[i][j] <= 'Z')
+                        argv[i][j] += 32;
+                    write (1, &argv[i][j], 1);
+                    j++;
+                }
+            }
+            j = 0;
+            write (1, "\n", 1);
+            i++;
+        }
+    }
+    else
+    write (1, "\n", 1);
+    return (0);
 }

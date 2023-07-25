@@ -1,33 +1,31 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 18:24:37 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/01/10 18:34:00 by amdemuyn         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	const char *s1;
-	const char *s2;
+    int i;
+    int j;
 
-	s1 = s;
-
-	while (*s1)
-	{
-		s2 = reject;
-		while (*s2)
-		{
-			if (*s1 == *s2++)
-				return (s1 - s);
-		}
-		s1++;
-	}
-	return (s1 - s);
+    i = 0;
+    j = 0;
+    while(s[i])
+    {
+        while (reject[j])
+        {
+            if (s[i] == reject[j])
+                return (i);
+            j++;
+        }
+        j = 0;
+        i++;
+    }
+    return (i);
 }
+
+/*
+int main (void)
+{
+    printf("%lu", ft_strcspn("ttttttestttt", "es"));
+    printf("%lu", strcspn("ttttttestttt", "es"));
+}
+*/
