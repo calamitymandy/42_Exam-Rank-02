@@ -1,18 +1,19 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int ft_numlen(int num)
+int numlen(int nbr)
 {
-    int len;
-
-    len = 0;
-    if (num == 0)
-        return (1);
-    if (num < 0)
-        len++;
-    while (num != 0)
+    int len = 0;
+    if (nbr == 0)
+        len = 1;
+    if (nbr < 0)
     {
-        num /= 10;
+        nbr = -nbr;
+        len++;
+    }
+    while (nbr > 0)
+    {
+        nbr /= 10;
         len++;
     }
     return (len);
@@ -20,35 +21,30 @@ int ft_numlen(int num)
 
 char	*ft_itoa(int nbr)
 {
-    char *str;
-    int num;
-    int len;
-
-    len = ft_numlen(nbr);
-    str = malloc(sizeof(char) * (len +1));
-    str[len] = '\0';
+    int len = numlen(nbr);
+    int num = nbr;
+    char *res = malloc(sizeof(char) * (len + 1));
+    res[len] = '\0';
+    if (nbr == 0)
+        res[0] = '0';
     if (nbr < 0)
     {
-        str[0] = '-';
         num = -nbr;
+        res[0] = '-';
     }
-    else
-        num = nbr;
-    if (num == 0)
-        str[0] = '0';
     while (num != 0)
     {
-        str[len -1] = (num % 10) + '0';
-        num = num / 10;
+        res[len - 1] = (num % 10) + '0';
+        num /= 10;
         len--;
     }
-    return (str);
+    return (res);
 }
 
-/*int main(void)
+/*
+int main(void)
 {
-    int nbr = 456;
-
-    printf("%s", ft_itoa(nbr));
-    return (0);
-}*/
+    // printf("%d\n", numlen(-125));
+    printf("%s\n", ft_itoa(23647));
+}
+*/
