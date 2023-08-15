@@ -3,15 +3,17 @@
 
 int numlen(int nbr)
 {
-    int len = 0;
+    int len;
+
+    len = 0;
     if (nbr == 0)
-        len = 1;
+        return (1);
     if (nbr < 0)
     {
         nbr = -nbr;
         len++;
     }
-    while (nbr > 0)
+    while (nbr != 0)
     {
         nbr /= 10;
         len++;
@@ -22,20 +24,21 @@ int numlen(int nbr)
 char	*ft_itoa(int nbr)
 {
     int len = numlen(nbr);
-    int num = nbr;
     char *res = malloc(sizeof(char) * (len + 1));
     res[len] = '\0';
     if (nbr == 0)
+    {
         res[0] = '0';
+    }
     if (nbr < 0)
     {
-        num = -nbr;
         res[0] = '-';
+        nbr = -nbr;
     }
-    while (num != 0)
+    while (nbr != 0)
     {
-        res[len - 1] = (num % 10) + '0';
-        num /= 10;
+        res[len - 1] = (nbr % 10) + '0';
+        nbr /= 10;
         len--;
     }
     return (res);
@@ -44,7 +47,6 @@ char	*ft_itoa(int nbr)
 /*
 int main(void)
 {
-    // printf("%d\n", numlen(-125));
-    printf("%s\n", ft_itoa(23647));
+    printf("%s", ft_itoa(-783920));
 }
 */
