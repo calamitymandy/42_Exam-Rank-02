@@ -1,21 +1,20 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int numlen(int nbr)
+int numlen(int num)
 {
-    int len;
+    int len = 0;
 
-    len = 0;
-    if (nbr == 0)
+    if (num == 0)
         return (1);
-    if (nbr < 0)
+    if (num < 0)
     {
-        nbr = -nbr;
+        num = -num;
         len++;
     }
-    while (nbr != 0)
+    while (num != 0)
     {
-        nbr /= 10;
+        num /= 10;
         len++;
     }
     return (len);
@@ -27,9 +26,7 @@ char	*ft_itoa(int nbr)
     char *res = malloc(sizeof(char) * (len + 1));
     res[len] = '\0';
     if (nbr == 0)
-    {
         res[0] = '0';
-    }
     if (nbr < 0)
     {
         res[0] = '-';
@@ -41,12 +38,14 @@ char	*ft_itoa(int nbr)
         nbr /= 10;
         len--;
     }
+
     return (res);
 }
 
 /*
 int main(void)
 {
-    printf("%s", ft_itoa(-783920));
+    printf("%s", ft_itoa(12345));
+    return (0);
 }
 */
