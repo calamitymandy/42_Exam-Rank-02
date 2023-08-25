@@ -1,31 +1,32 @@
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-    int i;
-    int j;
+    int i = 0;
+    int j = 0;
 
-    i = 0;
-    j = 0;
-    while(s[i])
+    while (s[i])
     {
         while (reject[j])
         {
-            if (s[i] == reject[j])
+            if (reject[j] == s[i])
                 return (i);
             j++;
         }
         j = 0;
+
         i++;
     }
+
     return (i);
 }
 
 /*
-int main (void)
+//QUIT MAIN !!!!!!!
+int main(void)
 {
-    printf("%lu", ft_strcspn("ttttttestttt", "es"));
-    printf("%lu", strcspn("ttttttestttt", "es"));
+    printf("%lu\n", ft_strcspn("hallo", "y"));
+    printf("%lu", strcspn("hallo", "y"));
 }
 */
