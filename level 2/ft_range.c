@@ -3,43 +3,43 @@
 
 int *ft_range(int start, int end)
 {
+    int len;
+    int *res;
     int i = 0;
-    int len = end - start;
-    if (len < 0)
-        len = -len;
 
-    int *arr = malloc(sizeof(int) * len);
+    if (start <= end)
+        len = end - start;
+    else
+        len = start - end;
+
+    res = malloc(sizeof(int) * len);
 
     if (start <= end)
     {
-        while (i <= len)
+        while (start <= end)
         {
-            arr[i] = start;
+            res[i++] = start;
             start++;
-            i++;
         }
     }
-    else if (end < start)
+    else
     {
-        while (i <= len)
+        while (start >= end)
         {
-            arr[i] = start;
+            res[i++] = start;
             start--;
-            i++;
         }
     }
-    return (arr);
+    return (res);
 }
-
 /*
 int main(void)
 {
     int i = 0;
-    int len = 17;
-    int *res = ft_range(2, -15);
-    while (i <= len)
+    while (i <= 2041)
     {
-        printf("%d\n", res[i]);
+        int *arr = ft_range(0, 2039);
+        printf("%d\n", arr[i]);
         i++;
     }
 }
