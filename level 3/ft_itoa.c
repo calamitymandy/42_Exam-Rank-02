@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int numlen(int num)
 {
@@ -25,27 +25,27 @@ char	*ft_itoa(int nbr)
     int len = numlen(nbr);
     char *res = malloc(sizeof(char) * (len + 1));
     res[len] = '\0';
+
     if (nbr == 0)
         res[0] = '0';
     if (nbr < 0)
     {
-        res[0] = '-';
         nbr = -nbr;
+        res[0] = '-';
     }
-    while (nbr != 0)
+    while (nbr && len)
     {
-        res[len - 1] = (nbr % 10) + '0';
+        res[len -1] = nbr % 10 + '0';
         nbr /= 10;
         len--;
     }
-
     return (res);
 }
-
 /*
+/////QUIT THAT MAIN!!!!!!!
 int main(void)
 {
-    printf("%s", ft_itoa(12345));
-    return (0);
+    //printf("%d", numlen(-12345));
+    printf("%s", ft_itoa(0));
 }
 */
