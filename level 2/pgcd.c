@@ -1,27 +1,30 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-void    pgcd(int a, int b)
+int	main(int argc, char **argv)
 {
-    int n;
+	if (argc == 3)
+	{
+		int num1 = atoi(argv[1]);
+		int num2 = atoi(argv[2]);
+		int res = 0;
 
-    n = a;
-    while (n > 0)
-    {
-        if (a % n == 0 && b % n == 0)
-        {
-            printf("%d", n);
-            return ;
-        }
-        n--;
-    }
-}
+		if (num1 < num2)
+			res = num1;
+		else 
+			res = num2;
 
-int main(int argc, char **argv)
-{
-    if (argc == 3)
-    {
-        pgcd(atoi(argv[1]), atoi(argv[2]));
-    }
-    printf("\n");
+		while (res != 0)
+		{
+			if (num1 % res == 0 && num2 % res == 0)
+			{
+				printf("%d", res);
+				break;
+			}
+			res--;
+		}
+	
+	}
+	printf("\n");
+	return (0);
 }
