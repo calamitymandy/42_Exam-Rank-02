@@ -1,41 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amdemuyn <amdemuyn@student.42madrid.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 19:58:22 by amdemuyn          #+#    #+#             */
-/*   Updated: 2023/01/24 20:18:10 by amdemuyn         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+char *ft_strdup(char *src)
 {
-	int	i;
-	char	*dest;
+	int i = 0;
 
-	i = 0;
-	while (src[i] != '\0')
+	while (src[i])
 		i++;
-	dest = malloc(sizeof(char) * (i + 1));
-	if (dest == NULL)
-		return (NULL);
+	char *dup = malloc(sizeof(char) * (i + 1));
+	if (!dup)
+		return NULL;
 	i = 0;
-	while (src[i] != '\0')
+	while (src[i])
 	{
-		dest[i] = src[i];
+		dup[i] = src[i];
 		i++;
 	}
-	dest[i] = src[i];
-	return (dest);
+	dup[i] = '\0';
+	return (dup);
 }
 
-/*int	main(void)
+/*QUIT MAIN
+int	main(void)
 {
-printf("%s", ft_strdup("Ceci est un test"));
-}*/
+	printf("%s", ft_strdup("Hello gorgeous!"));
+}
+*/
+
