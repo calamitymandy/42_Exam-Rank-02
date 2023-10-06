@@ -1,29 +1,25 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 char *ft_strdup(char *src)
 {
+	int len = 0;
+	while (src[len])
+		len++;
 	int i = 0;
-
-	while (src[i])
-		i++;
-	char *dup = malloc(sizeof(char) * (i + 1));
-	if (!dup)
-		return NULL;
-	i = 0;
-	while (src[i])
+	char *dup = malloc(sizeof(char) * len);
+	while (i < len)
 	{
 		dup[i] = src[i];
 		i++;
 	}
-	dup[i] = '\0';
 	return (dup);
 }
 
-/*QUIT MAIN
-int	main(void)
+/*QUIT MAIN!!!!!!!
+int main(void)
 {
-	printf("%s", ft_strdup("Hello gorgeous!"));
+	char *src = "hello you";
+	printf("%s", ft_strdup(src));
 }
 */
-

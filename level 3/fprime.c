@@ -8,19 +8,18 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		int num = atoi(argv[1]);
-		if (num < 0)
+
+		if (num == 1)
 		{
-			printf("\n");
+			printf("1\n");
 			return (0);
 		}
-		if (num == 1)
-			printf("1");
-		while (i <= num)
+		while (num > 0)
 		{
 			if (num % i == 0)
 			{
 				printf("%d", i);
-				if (i == num)
+				if (num == i)
 					break;
 				printf("*");
 				num /= i;
